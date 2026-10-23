@@ -1,60 +1,92 @@
-# Zepto Inventory & Pricing Analysis
+# Zepto Inventory & Retail Data Analysis Using SQL
 
-**Project Status:** 🚧 In Progress
+## Project Overview
 
-## About the Project
+This project analyzes a Zepto product inventory dataset using MySQL. The goal is to explore product categories, stock availability, discount percentages, pricing patterns, and repeated product names to identify useful data patterns and potential data-quality issues.
 
-This is my Data Analyst portfolio project, which I am building from scratch while learning Oracle SQL and Microsoft Excel.
+## Project Objectives
 
-The goal is to explore product pricing, discounts, and inventory availability using a public Zepto product inventory dataset.
+- Analyze product records across categories.
+- Examine in-stock and out-of-stock records.
+- Identify products with the highest discount percentages.
+- Calculate the difference between MRP and discounted selling price.
+- Investigate repeated product names and products listed under multiple categories.
+- Check the dataset for missing values and potential data-quality issues.
 
-## Tools & Technologies
+## Tools Used
 
-- Oracle SQL
-- Microsoft Excel
-- GitHub
+- **MySQL Workbench** — SQL queries and data analysis
+- **SQL** — Data exploration, aggregation, filtering, and sorting
+- **GitHub** — Project documentation and version control
 
-## Business Questions
+## Dataset Summary
 
-- Which product categories have the highest listed prices?
-- Which products offer the largest percentage discounts?
-- How many products are marked out of stock?
-- How do prices vary across product categories?
-- What is the estimated value of listed inventory?
+| Metric | Result |
+|---|---:|
+| Records in the imported table | 3,728 |
+| Unique product names | 1,674 |
+| In-stock records | 3,275 |
+| Out-of-stock records | 453 |
+| Columns in the original import | 9 |
 
-## Project Workflow
+*Note: These figures describe the imported dataset. Repeated product names are not necessarily duplicate records.*
 
-1. Inspect the raw dataset.
-2. Check missing values, duplicates, and inconsistent data.
-3. Clean and prepare the data.
-4. Import the dataset into Oracle SQL.
-5. Write SQL queries to answer business questions.
-6. Build an Excel dashboard.
-7. Document findings and recommendations.
+## Analysis Performed
 
-## Dataset
+### 1. Product Category Analysis
+Counted product records in each category and sorted the categories by record count.
 
-A public Zepto product inventory dataset will be used as the starting point. The exact source and dataset details will be documented after validation.
+### 2. Stock Availability Analysis
+Grouped records by stock status to examine the distribution of in-stock and out-of-stock products.
 
-## Important Note
+### 3. Discount Analysis
+Ranked product records by discount percentage to identify the highest advertised discounts.
 
-The dataset represents a product/inventory snapshot, not verified customer transactions. Any inventory valuation will be an estimate based on the available fields, not actual sales revenue.
+### 4. Price Difference Analysis
+Calculated the difference between MRP and discounted selling price. Price values and units require validation before interpreting these differences as reliable customer savings.
 
-## Learning Objectives
+### 5. Repeated Product Names
+Identified product names appearing multiple times and investigated whether their package weights, prices, quantities, or other attributes differ.
 
-- Practise SQL data analysis.
-- Learn data cleaning and validation.
-- Develop Excel reporting and dashboard skills.
-- Build a documented, reproducible portfolio project.
+### 6. Category Consistency
+Identified product names associated with multiple categories for further data-quality investigation.
 
-## Current Progress
+### 7. Data Quality Checks
+Included checks for missing values in important product, category, price, discount, and stock-status fields.
 
-- [x] GitHub repository created
-- [ ] Dataset validated
-- [ ] Data cleaned
-- [ ] Oracle SQL analysis completed
-- [ ] Excel dashboard completed
-- [ ] Findings documented
+## Initial Findings
 
-This project will be updated as I learn and complete each stage.
+- The imported table contains 3,728 records and 1,674 distinct product names.
+- Stock-status grouping returned 3,275 in-stock records and 453 out-of-stock records.
+- Cooking Essentials and Munchies each contained 512 records in the category analysis.
+- Some product names appeared multiple times and were associated with different categories.
+- Some price values appeared unusually high and should be validated before drawing conclusions about pricing or savings.
 
+## Repository Structure
+
+```text
+zepto-data-analysis/
+├── README.md
+└── sql/
+    └── zepto_analysis.sql
+```
+
+## How to Run the Project
+
+1. Download or clone this repository.
+2. Open MySQL Workbench and connect to your MySQL server.
+3. Import the dataset and create the `zepto_analysis` database.
+4. Ensure the imported table is named `zepto_v2`.
+5. Open `sql/zepto_analysis.sql` in MySQL Workbench.
+6. Execute the queries and review the results.
+
+## Project Status
+
+**In Progress** — SQL exploration and initial analysis are complete. Further validation of price values, category assignments, and repeated product records is planned.
+
+## Future Improvements
+
+- Validate and clean inconsistent product records.
+- Investigate unusually high price values and confirm units.
+- Create an Excel dashboard with key inventory metrics.
+- Add visualizations and additional business insights.
