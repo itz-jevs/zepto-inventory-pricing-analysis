@@ -2,7 +2,7 @@
 -- Database: MySQL
 -- Table: zepto_v2
 -- Project status: In Progress
--- Note: Run these queries in MySQL Workbench after importing the dataset.
+-- Note: Run these queries in MySQL Workbench after importing  the dataset.
 -- This script reports record-level patterns; repeated names are not automatically duplicates.
 
 USE zepto_analysis;
